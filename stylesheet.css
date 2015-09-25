@@ -10,7 +10,7 @@ html {
  }
 
 .grid-wrapper{
-	width: 500px;
+	display: table;
 	margin: 0 auto;
 }
  .block{
@@ -20,4 +20,12 @@ html {
  	text-align: center;
  	display: inline-block;
  	vertical-align: top;
+ }
+
+ .red-block{
+ 	background-color: #ffff00;
+ }
+
+ .blue-block{
+ 	background-color: #007300;
  }
