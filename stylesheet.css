@@ -8,24 +8,72 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
  }
-
+ body{
+ 	text-align: center;
+ }
 .grid-wrapper{
+	position: relative;
 	display: table;
 	margin: 0 auto;
 }
  .block{
- 	border: 1px solid black;
+ 	border-top: 1px solid black;
+ 	border-left: 1px solid black;
  	width: 25px;
  	height: 25px;
  	text-align: center;
  	display: inline-block;
  	vertical-align: top;
+ 	background-color: #E7E7E7;
+ }
+
+.row:nth-child(2)>.block{
+	border-top: 2px solid black;
+}
+ .row .block:first-child{
+ 	border-left: 2px solid black;
+ }
+ .row .block:last-child{
+ 	border-right: 2px solid black;
+ }
+ .row:last-child .block{
+ 	border-bottom: 2px solid black;
  }
 
  .red-block{
  	background-color: #ffff00;
  }
-
  .blue-block{
  	background-color: #007300;
+ }
+
+ .score{
+ 	font: 28px/30px Arial;
+ 	border: 2px solid red;
+ 	display: inline-block;
+ 	margin: 25px 0;
+ 	padding: 5px;
+ }
+
+ .overlay{
+ 	width: 100%;
+ 	height: 100%;
+ 	position: absolute;
+ 	z-index: 1;
+ 	background-color: rgba(0, 0, 255, 0.4);
+ 	left: 0;
+ 	top: 0;
+ 	line-height: 500px
+ }
+
+ .restart{
+ 	background-color: blue;
+ 	border: 2px solid white;
+ 	font: bold 48px/60px Arial;
+ 	color: white;
+ 	vertical-align: middle;
+ }
+
+ .restart:hover{
+ 	background-color: red;
  }
