@@ -15,10 +15,17 @@ var food = {
 
 $(document).ready(function() {
 	initialize();	
-	alert("Start");
-	game_interval = setInterval(game_loop,speed);
+	start_game();
 });
 
+var start_game = function(){
+	$('.overlay').show();
+		$('.restart').one("click",(function(){
+			$('.overlay').hide();
+			game_interval = setInterval(game_loop, speed);
+	}));
+
+}
 var initialize = function(){
 	for(var i = 0; i < 20; i++){
 		grid[i] = [];
@@ -28,8 +35,7 @@ var initialize = function(){
 	}
 	$('.score').html('Score: '+points);
 	$('.grid-wrapper').prepend('<div class="overlay"></div>');
-	$('.overlay').append('<button type="button" class="restart">Play Again</button>');
-	$('.overlay').hide();
+	$('.overlay').append('<button type="button" class="restart">Play</button>');
 	create_grid();
 }
 
@@ -44,7 +50,7 @@ var create_grid = function(){
 }
 
 var get_key_input = function(){
-	$('body').keydown(function(event){
+	$('body').one("keydown",(function(event){
 		var key = event.which;
 		switch(key){
 			case 37:
@@ -70,7 +76,7 @@ var get_key_input = function(){
 			default:
 				snake.dir = "right";
 		}
-	});
+	}));
 }
 
 var pause_game = function(){
@@ -151,7 +157,7 @@ var spawn_food = function(){
 }
 
 var restart_game = function(){
-	$('.overlay').hide();
+	
 	for(var i = 0; i < snake.size;i++){
 		$('.row:nth-child('+(snake.pos[i][0]+2)+') .block:nth-child('+(snake.pos[i][1]+1)+')').removeClass('blue-block red-block');
 	}
@@ -164,6 +170,7 @@ var restart_game = function(){
 	snake.size = 1;;
 	food.pos = [];
 	food.present = false;
+	$('.overlay').hide();
 	game_interval = setInterval(game_loop,speed);
 }
 
@@ -186,7 +193,7 @@ var detect_collision = function(){
 	if(game_over){
 		clearInterval(game_interval);
 		$('.overlay').show();
-		$('.restart').click(function(){
+		$('.restart').one("click",function(){
 			restart_game();
 		});
 	}
