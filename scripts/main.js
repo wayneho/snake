@@ -15,6 +15,7 @@ var food = {
 
 $(document).ready(function() {
 	initialize();	
+	alert("Start");
 	game_interval = setInterval(game_loop,speed);
 });
 
@@ -127,7 +128,7 @@ var update_game = function(head){
 	snake.size++;
 	food.present = false;
 	clearInterval(game_interval);
-	game_interval = setInterval(game_loop, speed-=5);
+	game_interval = setInterval(game_loop, speed-=10);
 	points++;
 }
 
